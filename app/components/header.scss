@@ -3,6 +3,9 @@
   height: var(--header-height);
   display: flex;
   align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 100;
 }
 
 .header-logo {
@@ -18,8 +21,15 @@
   align-items: center;
   margin-left: auto;
 
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
   a {
-    color: var(--header-text-color);
+    color: var(--header-color);
+    text-decoration: none;
   }
 }
 

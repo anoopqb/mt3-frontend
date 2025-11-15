@@ -1,12 +1,39 @@
-@import "tailwindcss";
+/* @import "tailwindcss"; */
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
 
 /* Design System - CSS Variables */
 :root {
   /* Global Variables */
   --container-width: 1280px;
+  --primary-font: "Inter", sans-serif;
+  --primary-background: #222;
+  --primary-color: #ffffff;
+  --secondary-background: #ffffff;
+  --secondary-color: #fff;
 
   /* Header Variables */
-  --header-background: #ffffff;
+  --header-background: var(--primary-background);
   --header-height: 4rem;
-  --header-text-color: #000000;
+  --header-color: var(--secondary-color);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+body {
+  font-family: var(--primary-font);
 }

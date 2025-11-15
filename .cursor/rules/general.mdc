@@ -1,0 +1,97 @@
+---
+alwaysApply: true
+---
+
+# Next.js Frontend Development Rules
+
+## Tech Stack
+- **Framework**: Next.js 16 with App Router
+- **Language**: TypeScript (strict mode enabled)
+- **React**: React 19
+- **Path Alias**: `@/*` maps to project root
+
+## Code Style & Best Practices
+
+### TypeScript
+- Always use TypeScript types and interfaces
+- Prefer `interface` for object shapes, `type` for unions/intersections
+- Use strict typing - avoid `any` unless absolutely necessary
+- Export types/interfaces when they're used across multiple files
+- Use `Readonly<>` for props that shouldn't be mutated
+
+### Next.js App Router
+- Use Server Components by default (no 'use client' unless needed)
+- Add `'use client'` directive only when:
+  - Using React hooks (useState, useEffect, etc.)
+  - Using browser APIs (window, document, etc.)
+  - Handling user interactions (onClick, onChange, etc.)
+  - Using Context API
+- Use `async/await` for Server Components that fetch data
+- Leverage Next.js built-in components: `Image`, `Link`, `Metadata`
+- Use route handlers (`route.ts`) for API endpoints in the app directory
+
+### File Organization
+- Components: `app/components/` or `components/` at root
+- Shared utilities: `lib/` or `utils/`
+- Types: `types/` directory or co-located with components
+- Use kebab-case for file names (e.g., `user-profile.tsx`)
+- Use PascalCase for component names
+
+### React Patterns
+- Prefer functional components with hooks
+- Use proper dependency arrays in useEffect
+- Extract reusable logic into custom hooks
+- Keep components small and focused (single responsibility)
+- Use React.memo() for expensive components when appropriate
+
+### Styling & Theming with CSS Variables
+- **Always use CSS variables** for colors, fonts, spacing, and other design tokens
+- Define CSS variables in `app/globals.css` using `:root` selector
+- Use semantic naming conventions: `--color-primary`, `--color-text`, `--font-heading`, `--spacing-md`
+- Group related variables with prefixes: `--color-*`, `--font-*`, `--spacing-*`, `--border-*`, `--shadow-*`
+- Support dark mode by defining variables under `[data-theme="dark"]` or `.dark` class
+- Use CSS variables in all stylesheets: `color: var(--color-text);`
+- Never hardcode colors, fonts, or spacing values directly in components
+- Create a design system with consistent variable names:
+  - Colors: `--color-primary`, `--color-secondary`, `--color-background`, `--color-surface`, `--color-text`, `--color-text-muted`, `--color-border`, `--color-error`, `--color-success`, `--color-warning`
+  - Fonts: `--font-primary`, `--font-heading`, `--font-mono`
+  - Spacing: `--spacing-xs`, `--spacing-sm`, `--spacing-md`, `--spacing-lg`, `--spacing-xl`
+  - Border radius: `--radius-sm`, `--radius-md`, `--radius-lg`
+  - Shadows: `--shadow-sm`, `--shadow-md`, `--shadow-lg`
+- Document all CSS variables in a comment block in `globals.css` for easy reference
+- Use CSS variables for transitions: `transition: color var(--transition-fast);`
+- Make the template easily customizable by allowing users to change variables in one place
+
+### Performance
+- Use Next.js `Image` component for images (not `<img>`)
+- Add `priority` prop to above-the-fold images
+- Use dynamic imports (`next/dynamic`) for heavy components
+- Implement proper loading states and error boundaries
+- Optimize bundle size - avoid unnecessary dependencies
+
+### Code Quality
+- Write self-documenting code with clear variable/function names
+- Add JSDoc comments for complex functions
+- Keep functions small and focused
+- Avoid deep nesting (max 3-4 levels)
+- Use early returns to reduce nesting
+- Handle errors gracefully with try-catch or error boundaries
+
+### API Integration
+- Use Server Components for data fetching when possible
+- Create API client utilities in `lib/` directory
+- Handle loading and error states properly
+- Use TypeScript types for API responses
+- Consider using React Query/SWR for client-side data fetching if needed
+
+### Accessibility
+- Use semantic HTML elements
+- Add proper ARIA labels when needed
+- Ensure keyboard navigation works
+- Maintain proper heading hierarchy
+- Use descriptive alt text for images
+
+### Git & Version Control
+- Write clear, descriptive commit messages
+- Keep commits focused and atomic
+- Don't commit build artifacts or node_modules

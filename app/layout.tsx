@@ -3,11 +3,20 @@ import "./globals.css";
 import Header from "./components/header/header";
 import { fetchApiData } from "@/lib/strapi";
 import Footer from "./components/footer/footer";
+import SpecialsPopup from "./components/specials-popup/specials-popup";
 
 export const metadata: Metadata = {
   title: "MT3 Website",
   description: "MT3 Website",
 };
+
+interface CTA {
+  id: number;
+  label: string;
+  url: string;
+  target?: string;
+  type?: "primary" | "secondary";
+}
 
 interface GlobalApiResponse {
   data: {
@@ -15,6 +24,11 @@ interface GlobalApiResponse {
       url: string;
     };
     [key: string]: unknown;
+    Specials: {
+      title: string;
+      description: string;
+      cta: CTA[];
+    };
   }
 }
 
@@ -37,6 +51,8 @@ interface FooterApiResponse {
     copyright: string;
   }
 }
+
+
 const globalData = await fetchApiData<GlobalApiResponse>("global?pLevel=3");
 const headerData = await fetchApiData<HeaderApiResponse>("header?pLevel=3");
 const footerData = await fetchApiData<FooterApiResponse>("footer?pLevel=3");
@@ -56,6 +72,10 @@ export default function RootLayout({
         className={`antialiased`}
       >
         <Header logoUrl={`${process.env.NEXT_PUBLIC_URL}${global.logo.url}`} logoAlt="Logo" logoLocation={header.logoLocation} navItems={header.NavMenu} />
+
+        <SpecialsPopup title={global.Specials.title} description={global.Specials.description} cta={global.Specials.cta} />
+
+
         {children}
 
         <Footer

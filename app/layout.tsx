@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import Header from "./components/header";
+import Header from "./components/header/header";
 import { fetchApiData } from "@/lib/strapi";
-import Footer from "./components/footer";
+import Footer from "./components/footer/footer";
 
 export const metadata: Metadata = {
   title: "MT3 Website",

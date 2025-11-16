@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import "@/app/components/header.scss";
+import "./header.scss";
 
 export default function Header({ logoUrl, logoAlt, logoLocation, navItems }: { logoUrl: string, logoAlt: string, logoLocation: "left" | "center" | "right", navItems: any[] }) {
     const getLogoPositionClass = () => {

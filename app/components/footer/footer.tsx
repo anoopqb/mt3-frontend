@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { BlocksRenderer, type BlocksContent } from "@strapi/blocks-react-renderer";
-import "@/app/components/footer.scss";
+import "./footer.scss";
 
 interface FooterProps {
     logoUrl: string;

@@ -1,9 +1,30 @@
-import Image from "next/image";
+// import PageContent from '@/lib/PageContent';
+import fetchContentType, { StrapiData } from '@/lib/fetchContentType';
+import { notFound } from 'next/navigation';
+import PageContent from '@/lib/PageContent';
 
-export default function Home() {
+// Force static generation for the home page
+export const dynamic = 'force-static';
+
+export default async function HomePage() {
+  const pageData = (await fetchContentType(
+    'pages',
+    {
+      filters: {
+        slug: 'home',
+      },
+      pLevel: 8
+    },
+    true,
+  )) as StrapiData;
+
+  if (!pageData) notFound();
+
   return (
-    <div>
-      <h1>Hello World</h1>
-    </div>
-  )
+    <>
+      <main className="mainContainer transparent">
+        <PageContent pageData={pageData} />
+      </main>
+    </>
+  );
 }

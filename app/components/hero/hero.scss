@@ -1,0 +1,114 @@
+.hero {
+  position: relative;
+  width: 100%;
+  min-height: var(--hero-min-height, 600px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.hero-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+}
+
+.hero-background-image {
+  object-fit: cover;
+  object-position: center;
+}
+
+.hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--hero-overlay, rgba(0, 0, 0, 0.4));
+  z-index: 1;
+}
+
+.hero-container {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: var(--container-width, 1280px);
+  margin: 0 auto;
+  padding: 0 var(--container-padding, 1.5rem);
+}
+
+.hero-content {
+  max-width: var(--hero-content-width, 800px);
+  text-align: var(--hero-text-align, left);
+  color: var(--hero-text-color, #fff);
+}
+
+.hero-title {
+  margin: 0 0 1.5rem;
+  font-size: var(--hero-title-size, 3rem);
+  font-weight: var(--hero-title-weight, 700);
+  line-height: 1.2;
+  color: var(--hero-title-color, #fff);
+
+  @media (max-width: 768px) {
+    font-size: 2rem;
+  }
+}
+
+.hero-description {
+  margin: 0 0 2rem;
+  font-size: var(--hero-description-size, 1.25rem);
+  line-height: 1.6;
+  color: var(--hero-description-color, rgba(255, 255, 255, 0.9));
+
+  @media (max-width: 768px) {
+    font-size: 1rem;
+  }
+}
+
+.hero-cta {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.hero-button {
+  display: inline-block;
+  padding: var(--hero-button-padding, 1rem 2rem);
+  font-size: var(--hero-button-font-size, 1rem);
+  font-weight: 600;
+  text-decoration: none;
+  border-radius: var(--hero-button-radius, 0.5rem);
+  transition: all 0.3s ease;
+  border: 2px solid transparent;
+  cursor: pointer;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  }
+}
+
+.hero-button--primary {
+  background-color: var(--hero-button-primary-bg, #fff);
+  color: var(--hero-button-primary-color, #000);
+
+  &:hover {
+    background-color: var(--hero-button-primary-hover-bg, #f5f5f5);
+  }
+}
+
+.hero-button--secondary {
+  background-color: transparent;
+  color: var(--hero-button-secondary-color, #fff);
+  border-color: var(--hero-button-secondary-border, #fff);
+
+  &:hover {
+    background-color: var(--hero-button-secondary-hover-bg, rgba(255, 255, 255, 0.1));
+  }
+}
+

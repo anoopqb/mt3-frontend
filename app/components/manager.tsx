@@ -1,6 +1,6 @@
 import React from 'react';
-// import OneColumnContent from '@/app/components/OneColumnContent';
-// import TwoColumnContent from '@/app/components/TwoColumnContent';
+import OneColumnContent from '@/app/components/one-column/one-column';
+// import TwoColumnContent from '@/app/components/two-column/two-column';
 import Hero from '@/app/components/hero/hero';
 // import FeeCalc from '@/app/components/FeeCalc';
 
@@ -18,7 +18,7 @@ export interface DynamicZoneManagerProps {
 const componentMapping: { [key: string]: React.ComponentType<any> } = {
     'dynamic-zone.hero': Hero,
     // 'dynamic-zone.two-column-content': TwoColumnContent,
-    // 'dynamic-zone.one-column-content': OneColumnContent,
+    'dynamic-zone.one-column-content': OneColumnContent,
     // 'dynamic-zone.fee-calc': FeeCalc,
 };
 

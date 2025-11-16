@@ -16,6 +16,15 @@ interface HeroImage {
     height?: number;
 }
 
+interface HeroVideo {
+    id: number;
+    url: string;
+    alternativeText?: string | null;
+    mime?: string;
+    ext?: string;
+    size?: number;
+}
+
 interface CTAButton {
     id: number;
     label: string;
@@ -27,26 +36,45 @@ interface CTAButton {
 interface HeroProps {
     title: string;
     description: string;
-    heroType: "Image" | "Video";
-    image: HeroImage[];
+    HeroType: "Image" | "Video";
+    image?: HeroImage[];
+    Video?: HeroVideo | null;
     cta?: CTAButton[];
 }
 
 export default function Hero({
     title,
     description,
-    heroType,
+    HeroType,
     image,
+    Video,
     cta = [],
 }: HeroProps) {
-    const backgroundImage = image?.[0];
     const baseUrl = process.env.NEXT_PUBLIC_API_URL?.replace("/api", "") || process.env.NEXT_PUBLIC_URL || "http://localhost:1337";
+    const backgroundImage = image?.[0];
     const imageUrl = backgroundImage?.url ? `${baseUrl}${backgroundImage.url}` : "";
     const imageAlt = backgroundImage?.alternativeText || title;
+    const videoUrl = Video?.url ? `${baseUrl}${Video.url}` : "";
+
+    console.log(HeroType);
 
     return (
         <section className="hero">
-            {backgroundImage && (
+            {HeroType === "Video" && Video && videoUrl && (
+                <div className="hero-background">
+                    <video
+                        className="hero-background-video"
+                        autoPlay
+                        loop
+                        muted
+                        playsInline
+                    >
+                        <source src={videoUrl} type={Video.mime || "video/mp4"} />
+                    </video>
+                    <div className="hero-overlay" />
+                </div>
+            )}
+            {HeroType === "Image" && backgroundImage && imageUrl && (
                 <div className="hero-background">
                     <Image
                         src={imageUrl}

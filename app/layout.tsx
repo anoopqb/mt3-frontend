@@ -44,9 +44,6 @@ const global = globalData.data;
 const header = headerData.data;
 const footer = footerData.data;
 
-
-console.log(footer.OfficeHours);
-
 export default function RootLayout({
   children,
 }: Readonly<{

@@ -51,7 +51,7 @@ export default function Footer({
                     </div>
                 </div>
                 <div className="footer-right">
-                    <h3 className="footer-hours-title">{officeHoursTitle}</h3>
+                    <h3 className="footer-hours-title mt-title">{officeHoursTitle}</h3>
                     <div className="footer-hours">
                         <BlocksRenderer content={officeHours} />
                     </div>

@@ -1,5 +1,5 @@
 import Image from "next/image";
-import Link from "next/link";
+import Button from "../button/button";
 import "./hero.scss";
 
 interface HeroImage {
@@ -63,34 +63,20 @@ export default function Hero({
             )}
             <div className="hero-container">
                 <div className="hero-content">
-                    <h1 className="hero-title">{title}</h1>
+                    <h1 className="hero-title mt-title">{title}</h1>
                     <p className="hero-description">{description}</p>
                     {cta && cta.length > 0 && (
                         <div className="hero-cta">
-                            {cta.map((button) => {
-                                const isExternal = button.target === "_blank";
-                                const buttonClass = `hero-button hero-button--${button.type || "primary"}`;
-
-                                if (isExternal || button.url.startsWith("http")) {
-                                    return (
-                                        <a
-                                            key={button.id}
-                                            href={button.url}
-                                            target={button.target}
-                                            rel={button.target === "_blank" ? "noopener noreferrer" : undefined}
-                                            className={buttonClass}
-                                        >
-                                            {button.label}
-                                        </a>
-                                    );
-                                }
-
-                                return (
-                                    <Link key={button.id} href={button.url} className={buttonClass}>
-                                        {button.label}
-                                    </Link>
-                                );
-                            })}
+                            {cta.map((button) => (
+                                <Button
+                                    key={button.id}
+                                    type={button.type || "primary"}
+                                    href={button.url}
+                                    target={button.target}
+                                >
+                                    {button.label}
+                                </Button>
+                            ))}
                         </div>
                     )}
                 </div>

@@ -1,15 +1,34 @@
 /* @import "tailwindcss"; */
-@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+
 
 /* Design System - CSS Variables */
 :root {
   /* Global Variables */
   --container-width: 1280px;
   --primary-font: "Inter", sans-serif;
-  --primary-background: #222222;
+  --secondary-font: "Playfair Display", serif;
+  --primary-background: #000000;
   --primary-color: #ffffff;
   --secondary-background: #ffffff;
   --secondary-color: #ffffff;
+
+  --title-font: var(--secondary-font);
+  --content-font: var(--primary-font);
+
+  --button-primary-bg: var(--primary-background);
+  --button-primary-color: var(--secondary-background);
+  --button-primary-border: var(--primary-background);
+  --button-primary-hover-bg: var(--primary-background);
+  --button-primary-hover-color: var(--secondary-background);
+  --button-primary-hover-border: var(--primary-background);
+  --button-secondary-bg: transparent;
+  --button-secondary-color: var(--secondary-background);
+  --button-secondary-border: var(--secondary-background);
+  --button-secondary-hover-bg: var(--secondary-background);
+  --button-secondary-hover-color: var(--primary-background);
+
+
 
   /* Header Variables */
   --header-background: var(--primary-background);
@@ -24,6 +43,10 @@
   --footer-text-color: var(--secondary-color);
   --footer-heading-color: var(--secondary-color);
   --footer-copyright-background: var(--primary-background);
+
+
+  /* Hero Variables */
+  --hero-text-align: center;
 }
 
 *,
@@ -44,5 +67,10 @@ body {
 }
 
 body {
-  font-family: var(--primary-font);
+  font-family: var(--content-font);
+}
+
+.mt-title {
+  font-family: var(--title-font);
+  font-weight: 400;
 }

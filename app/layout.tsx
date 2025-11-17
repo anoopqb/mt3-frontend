@@ -29,6 +29,7 @@ interface GlobalApiResponse {
       description: string;
       cta: CTA[];
     };
+    scheduleTour: CTA;
   }
 }
 
@@ -71,7 +72,7 @@ export default function RootLayout({
       <body
         className={`antialiased`}
       >
-        <Header logoUrl={`${process.env.NEXT_PUBLIC_URL}${global.logo.url}`} logoAlt="Logo" logoLocation={header.logoLocation} navItems={header.NavMenu} />
+        <Header logoUrl={`${process.env.NEXT_PUBLIC_URL}${global.logo.url}`} logoAlt="Logo" logoLocation={header.logoLocation} navItems={header.NavMenu} cta={global.scheduleTour} />
 
         <SpecialsPopup title={global.Specials.title} description={global.Specials.description} cta={global.Specials.cta} />
 

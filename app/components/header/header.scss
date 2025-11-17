@@ -39,6 +39,25 @@
   gap: 1.5rem;
 }
 
+.header-cta {
+  display: flex;
+  align-items: center;
+  margin-left: 1.5rem;
+
+  .button--primary,
+  .button--secondary {
+    background-color: var(--header-cta-bg, #fff);
+    color: var(--header-cta-color, #000);
+    border-color: var(--header-cta-border, #fff);
+
+    &:hover:not(:disabled):not([aria-disabled="true"]) {
+      background-color: var(--header-cta-hover-bg, #000);
+      color: var(--header-cta-hover-color, #fff);
+      border-color: var(--header-cta-hover-border, #fff);
+    }
+  }
+}
+
 .header-container {
   width: 100%;
   max-width: var(--container-width);
@@ -51,4 +70,3 @@
     grid-template-columns: 1fr 1fr 1fr;
   }
 }
-

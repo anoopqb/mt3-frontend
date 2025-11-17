@@ -4,6 +4,7 @@ import "./button.scss";
 interface ButtonProps {
     children: React.ReactNode;
     type?: "primary" | "secondary";
+    size?: "small" | "medium" | "large";
     href?: string;
     onClick?: () => void;
     target?: string;
@@ -15,6 +16,7 @@ interface ButtonProps {
 export default function Button({
     children,
     type = "primary",
+    size = "medium",
     href,
     onClick,
     target,
@@ -22,7 +24,7 @@ export default function Button({
     className = "",
     variant = "button",
 }: ButtonProps) {
-    const baseClass = `button button--${type}`;
+    const baseClass = `button button--${type} button--${size}`;
     const combinedClassName = `${baseClass} ${className}`.trim();
 
     // If href is provided, render as Link or anchor

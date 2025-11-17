@@ -58,6 +58,22 @@
   }
 }
 
+// Size variants
+.button--small {
+  padding: var(--button-padding-small, 0.5rem 1rem);
+  font-size: var(--button-font-size-small, 0.875rem);
+}
+
+.button--medium {
+  padding: var(--button-padding-medium, 1rem 2rem);
+  font-size: var(--button-font-size-medium, 1rem);
+}
+
+.button--large {
+  padding: var(--button-padding-large, 1.25rem 2.5rem);
+  font-size: var(--button-font-size-large, 1.125rem);
+}
+
 // Responsive adjustments
 @media (max-width: 768px) {
   .button {

@@ -39,7 +39,8 @@ export default async function fetchContentType(
         const queryParams = { ...params };
 
         // Construct the full URL for the API request
-        const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:1337';
+        const apiUrl = process.env.NEXT_PUBLIC_URL || 'http://localhost:1337';
+        console.log(apiUrl);
         const url = new URL(
             `/api/${contentType}`,
             apiUrl

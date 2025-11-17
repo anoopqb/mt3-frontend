@@ -2,12 +2,14 @@ import type { NextConfig } from "next";
 const dotenv = require('dotenv');
 const fs = require('fs');
 
-const envFile = `.env.${process.env.SITE || 'local'}`;
+const envFile = `.env.${process.env.SITE}`;
 
-// Load the env file if it exists
+// Load the env file if it exists, overriding any existing values
 if (fs.existsSync(envFile)) {
   console.log(`🔹 Loading env file: ${envFile}`);
-  dotenv.config({ path: envFile });
+  dotenv.config({ path: envFile, override: true });
+} else if (process.env.SITE) {
+  console.log(`⚠️  Warning: ${envFile} not found, but SITE=${process.env.SITE} is set`);
 }
 
 const nextConfig: NextConfig = {
@@ -27,6 +29,7 @@ const nextConfig: NextConfig = {
       },
     ],
   },
+  distDir: `build/${process.env.SITE || 'local'}`,
   env: {
     NEXT_PUBLIC_API_URL: process.env.NEXT_PUBLIC_API_URL,
     NEXT_PUBLIC_URL: process.env.NEXT_PUBLIC_URL,

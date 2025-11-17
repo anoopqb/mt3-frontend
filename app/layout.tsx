@@ -5,10 +5,7 @@ import { fetchApiData } from "@/lib/strapi";
 import Footer from "./components/footer/footer";
 import SpecialsPopup from "./components/specials-popup/specials-popup";
 
-export const metadata: Metadata = {
-  title: "MT3 Website",
-  description: "MT3 Website",
-};
+
 
 interface CTA {
   id: number;
@@ -20,6 +17,8 @@ interface CTA {
 
 interface GlobalApiResponse {
   data: {
+    title: string;
+    siteName: string;
     logo: {
       url: string;
     };
@@ -54,12 +53,22 @@ interface FooterApiResponse {
 }
 
 
+
+
 const globalData = await fetchApiData<GlobalApiResponse>("global?pLevel=3");
 const headerData = await fetchApiData<HeaderApiResponse>("header?pLevel=3");
 const footerData = await fetchApiData<FooterApiResponse>("footer?pLevel=3");
 const global = globalData.data;
 const header = headerData.data;
 const footer = footerData.data;
+
+export const metadata: Metadata = {
+  title: (globalData.data.siteName as string) || globalData.data.title,
+  description: "MT3 Website",
+};
+
+const siteId = process.env.NEXT_PUBLIC_CSS || 'sitea';
+const cssFile = `styles/${siteId}.css`;
 
 export default function RootLayout({
   children,
@@ -68,7 +77,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-
+      <head>
+        <link rel="stylesheet" href={`${cssFile}`} />
+      </head>
       <body
         className={`antialiased`}
       >

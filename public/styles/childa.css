@@ -1,0 +1,23 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap');
+
+body {
+
+    --secondary-font: "Oswald", sans-serif;
+    --title-font: var(--secondary-font);
+
+    --primary-background: #d93b36;
+    --secondary-background: #ffffff;
+
+    --header-background: #3c3a38;
+    --footer-background: #3c3a38;
+
+    --footer-copyright-background: #242424;
+
+    --button-primary-bg: var(--primary-background);
+    --button-primary-color: var(--secondary-background);
+    --button-primary-border: var(--primary-background);
+    --button-primary-hover-bg: var(--primary-background);
+    --button-primary-hover-color: var(--secondary-background);
+    --button-primary-hover-border: var(--primary-background);
+
+}

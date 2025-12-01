@@ -8,7 +8,7 @@ export async function fetchStrapiData<T = unknown>(
     endpoint: string,
     options: RequestInit = {}
 ): Promise<T> {
-    const apiUrl = process.env.NEXT_PUBLIC_API_URL || "http://localhost:1337/api";
+    const apiUrl = process.env.NEXT_PUBLIC_API_URL || "http://localhost:1338/api";
     const bearerToken = process.env.NEXT_PUBLIC_API_TOKEN;
 
     // Ensure endpoint starts with /
@@ -44,7 +44,7 @@ export async function fetchStrapiData<T = unknown>(
     // Merge options
     const fetchOptions: RequestInit = {
         ...options,
-        cache: "no-store",
+        cache: "force-cache",
         headers,
     };
 
@@ -81,7 +81,7 @@ export async function fetchApiData<T = unknown>(
 ): Promise<T> {
     return fetchStrapiData<T>(endpoint, {
         ...options,
-        cache: "no-store",
+        cache: "force-cache",
     });
 }
 

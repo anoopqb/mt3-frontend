@@ -50,6 +50,7 @@ export default async function fetchContentType(
         const token = process.env.NEXT_PUBLIC_API_TOKEN;
 
         const response = await fetch(`${url.href}?${qs.stringify(queryParams)}`, {
+            cache: "force-cache",
             headers: {
                 'Authorization': `Bearer ${token}`,
                 'Content-Type': 'application/json',

@@ -6,6 +6,15 @@ import PageContent from '@/lib/PageContent';
 // Force static generation for the home page
 export const dynamic = 'force-static';
 
+// generate static params
+export const generateStaticParams = async () => {
+  return [
+    {
+      slug: 'home',
+    },
+  ];
+};
+
 export default async function HomePage() {
   const pageData = (await fetchContentType(
     'pages',

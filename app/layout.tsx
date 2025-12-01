@@ -4,6 +4,7 @@ import Header from "./components/header/header";
 import { fetchApiData } from "@/lib/strapi";
 import Footer from "./components/footer/footer";
 import SpecialsPopup from "./components/specials-popup/specials-popup";
+import pathname from "next/navigation";
 
 
 
@@ -68,7 +69,7 @@ export const metadata: Metadata = {
 };
 
 const siteId = process.env.NEXT_PUBLIC_CSS || 'sitea';
-const cssFile = `styles/${siteId}.css`;
+const cssFile = `/styles/${siteId}.css`;
 
 export default function RootLayout({
   children,
@@ -85,7 +86,8 @@ export default function RootLayout({
       >
         <Header logoUrl={`${process.env.NEXT_PUBLIC_URL}${global.logo.url}`} logoAlt="Logo" logoLocation={header.logoLocation} navItems={header.NavMenu} cta={global.scheduleTour} />
 
-        <SpecialsPopup title={global.Specials.title} description={global.Specials.description} cta={global.Specials.cta} />
+
+        {/* <SpecialsPopup title={global.Specials.title} description={global.Specials.description} cta={global.Specials.cta} /> */}
 
 
         {children}

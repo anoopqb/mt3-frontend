@@ -13,7 +13,8 @@ if (fs.existsSync(envFile)) {
 }
 
 const nextConfig: NextConfig = {
-  // output: "export",
+  output: "export",
+  trailingSlash: true,
   images: {
     remotePatterns: [
       {

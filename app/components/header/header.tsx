@@ -34,6 +34,7 @@ export default function Header({ logoUrl, logoAlt, logoLocation, navItems, cta }
                 <div className="header-nav">
                     <ul className="header-nav-list">
                         {navItems.map((item: any) => (
+                            console.log(item),
                             <li key={item.id} className="header-nav-item">
                                 <Link href={`/${item.MenuItem.toLowerCase().replace(/\s+/g, "-")}`}>{item.MenuItem}</Link>
                             </li>

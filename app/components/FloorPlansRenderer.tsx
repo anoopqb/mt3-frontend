@@ -72,7 +72,7 @@ export default function FloorPlansRenderer() {
     }, [html, loading]);
 
     if (loading) {
-        return <div className="p-4">Loading floor plans...</div>;
+        return <div className="p-4 loading-text">Loading floor plans...</div>;
     }
 
     if (error) {
@@ -84,6 +84,7 @@ export default function FloorPlansRenderer() {
             {/* Hidden container to load resources */}
             <div
                 ref={containerRef}
+                className="fp-container"
                 style={{
                     opacity: resourcesLoaded ? 1 : 0,
                     transition: 'opacity 0.3s ease-in-out'
@@ -97,11 +98,11 @@ export default function FloorPlansRenderer() {
 
             {
                 resourcesLoaded && (
-                    <Script 
-                    src="https://bozzuto-floorplans-dev.s3.us-east-1.amazonaws.com/assets/script.js" 
-                    strategy="afterInteractive"/>
+                    <Script
+                        src="/fp.js"
+                        strategy="afterInteractive" />
                 )
-            
+
             }
         </>
     );

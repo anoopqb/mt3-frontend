@@ -21,3 +21,40 @@ body {
     --button-primary-hover-border: var(--primary-background);
 
 }
+
+.floor-plan-card a.apply-now-btn,
+.pagination button.active,
+.unit-details a.apply-now-btn {
+    background-color: var(--primary-background);
+    color: #fff;
+}
+
+.floor-plan-card a.view-units-btn,
+.unit-details a.view-units-btn,
+.apartment-card a.view-details-btn {
+    background-color: var(--primary-background);
+}
+
+.tabs button.tab.active {
+    border-color: var(--primary-background);
+}
+
+
+.two-column-image-wrapper {
+    &:after {
+        content: '';
+        position: absolute;
+        top: -30px;
+        right: -30px;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+        background-color: var(--primary-background);
+        border-radius: .5rem;
+    }
+}
+
+.two-column.two-column--reversed .two-column-image-wrapper:after {
+    right: auto;
+    left: -30px;
+}

@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { useSearchParams } from 'next/navigation';
+import Script from 'next/script';
 
 export default function ApartmentRenderer() {
     // Get floorplanId from URL search params
@@ -59,17 +60,17 @@ export default function ApartmentRenderer() {
             const scripts = container.querySelectorAll('script');
             scripts.forEach((oldScript) => {
                 const newScript = document.createElement('script');
-                
+
                 // Copy attributes
                 Array.from(oldScript.attributes).forEach(attr => {
                     newScript.setAttribute(attr.name, attr.value);
                 });
-                
+
                 // Copy inline script content
                 if (oldScript.innerHTML) {
                     newScript.innerHTML = oldScript.innerHTML;
                 }
-                
+
                 // Replace old script with new one to trigger execution
                 oldScript.parentNode?.replaceChild(newScript, oldScript);
             });
@@ -105,7 +106,7 @@ export default function ApartmentRenderer() {
     }, [html, loading]);
 
     if (loading) {
-        return <div className="p-4">Loading floor plans...</div>;
+        return <div className="p-4 loading-text">Loading floor plans...</div>;
     }
 
     if (error) {
@@ -127,6 +128,14 @@ export default function ApartmentRenderer() {
             {!resourcesLoaded && (
                 <div className="p-4">Loading resources...</div>
             )}
+
+            {
+                resourcesLoaded && (
+                    <Script
+                        src="/fp.js"
+                        strategy="afterInteractive" />
+                )
+            }
         </>
     );
 }

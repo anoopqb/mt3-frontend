@@ -26,7 +26,7 @@
   .two-column-grid {
     direction: rtl;
 
-    > * {
+    >* {
       direction: ltr;
     }
   }
@@ -35,12 +35,14 @@
 .two-column-image-wrapper {
   width: 100%;
   position: relative;
-  overflow: hidden;
-  border-radius: var(--two-column-image-radius, 0.5rem);
   aspect-ratio: var(--two-column-image-aspect, 4 / 3);
 
   @media (max-width: 768px) {
     order: -1;
+  }
+
+  img {
+    border-radius: var(--two-column-image-radius, 0.5rem);
   }
 }
 
@@ -87,4 +89,3 @@
   flex-wrap: wrap;
   margin-top: 0.5rem;
 }
-

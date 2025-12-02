@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { useSearchParams } from 'next/navigation';
+import Script from 'next/script';
 
 export default function ApartmentUnitRenderer() {
     // Get unitId from URL search params
@@ -82,7 +83,7 @@ export default function ApartmentUnitRenderer() {
     }, [html, loading]);
 
     if (loading) {
-        return <div className="p-4">Loading floor plans...</div>;
+        return <div className="p-4 loading-text">Loading floor plans...</div>;
     }
 
     if (error) {
@@ -94,6 +95,7 @@ export default function ApartmentUnitRenderer() {
             {/* Hidden container to load resources */}
             <div
                 ref={containerRef}
+                className="fp-container"
                 style={{
                     opacity: resourcesLoaded ? 1 : 0,
                     transition: 'opacity 0.3s ease-in-out'
@@ -102,8 +104,17 @@ export default function ApartmentUnitRenderer() {
             />
             {/* Show loading indicator while resources are loading */}
             {!resourcesLoaded && (
-                <div className="p-4">Loading resources...</div>
+                <div className="p-4 loading-text">Loading resources...</div>
+
             )}
+
+            {
+                resourcesLoaded && (
+                    <Script
+                        src="/fp.js"
+                        strategy="afterInteractive" />
+                )
+            }
         </>
     );
 }

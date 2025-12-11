@@ -5,7 +5,7 @@ body {
     --secondary-font: "Oswald", sans-serif;
     --title-font: var(--secondary-font);
 
-    --primary-background: #d93b36;
+    --primary-background: #003563;
     --secondary-background: #ffffff;
 
     --header-background: #3c3a38;
@@ -41,6 +41,14 @@ body {
 
 
 .two-column-image-wrapper {
+    /* border: 10px solid var(--primary-background); */
+    border-radius: .5rem;
+
+    img {
+        display: block;
+        border-radius: 0rem;
+    }
+
     &:after {
         content: '';
         position: absolute;

@@ -42,7 +42,9 @@
     "build/childa/types/**/*.ts",
     "build/childa/dev/types/**/*.ts",
     "build/childb/types/**/*.ts",
-    "build/childb/dev/types/**/*.ts"
+    "build/childb/dev/types/**/*.ts",
+    "build/master/types/**/*.ts",
+    "build/master/dev/types/**/*.ts"
   ],
   "exclude": [
     "node_modules"

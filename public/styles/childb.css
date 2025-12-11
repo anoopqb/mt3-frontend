@@ -1,0 +1,16 @@
+body {
+    --primary-background: #008f58;
+    --secondary-background: #ffffff;
+
+
+    --button-primary-bg: var(--primary-background);
+    --button-primary-color: var(--secondary-background);
+    --button-primary-border: var(--primary-background);
+    --button-primary-hover-bg: var(--primary-background);
+    --button-primary-hover-color: var(--secondary-background);
+    --button-primary-hover-border: var(--primary-background);
+
+    --header-cta-bg: var(--primary-background);
+    --header-cta-color: var(--secondary-background);
+    --header-cta-border: var(--primary-background);
+}

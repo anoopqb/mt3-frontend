@@ -29,6 +29,7 @@ interface OneColumnProps {
     description: string;
     backgroundImage?: BackgroundImage | null;
     cta?: CTAButton[];
+    disclaimer?: string;
 }
 
 export default function OneColumn({
@@ -36,6 +37,7 @@ export default function OneColumn({
     description,
     backgroundImage,
     cta = [],
+    disclaimer,
 }: OneColumnProps) {
     const baseUrl = process.env.NEXT_PUBLIC_API_URL?.replace("/api", "") || process.env.NEXT_PUBLIC_URL || "http://localhost:1337";
     const imageUrl = backgroundImage?.url ? `${baseUrl}${backgroundImage.url}` : "";
@@ -75,6 +77,10 @@ export default function OneColumn({
                             ))}
                         </div>
                     )}
+
+                    {/* {disclaimer && (
+                        <p className="one-column-disclaimer mt-content">{disclaimer}</p>
+                    )} */}
                 </div>
             </div>
         </section>
